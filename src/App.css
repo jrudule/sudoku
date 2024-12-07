@@ -41,6 +41,12 @@
   color: #888;
 }
 
+
+.container {
+  display: flex;
+  gap: 10px;
+}
+
 .row {
   display: flex;
 }
@@ -55,6 +61,14 @@
   font-size: 24px;
 }
 
+.cell:hover{
+  border: red 2px solid; 
+}
+
+.input {
+  background: #000;
+}
+
 .bottom-border {
   border-bottom: 3px rgb(121, 114, 83) solid;
 }
@@ -66,4 +80,20 @@
 }
 .left-border {
   border-left: 3px rgb(121, 114, 83) solid;
+}
+
+.numberList {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.numberList button {
+  background: rgb(93, 159, 210);
+  color: white;
+  font-weight: bold;
+}
+
+.selected {
+  border: rgb(223, 14, 14) 2px solid;
 }

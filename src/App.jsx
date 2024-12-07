@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
+  const [board, setBoard] = useState(Array.from({ length: 9 }, () => Array(9).fill(0)));
+
   //Lai mainītu ciparu secību laukumā
-  function shuffle(array) {
+   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
@@ -57,35 +59,89 @@ function App() {
     return true;
   }
 
-  // Lai izveidotu sākuma masīvu
-  const board = Array.from({ length: 9 }, () => Array(9).fill(0));
+  // Lai noņemtu skaitļus, kurus lietotājam būs jāievada
+  function removeNumbers(board, emptyCells) {
+    let cellsToRemove = emptyCells;
 
-  // Lai aizpildītu Sudoku matricu
-  fillBoard(board);
+    while (cellsToRemove > 0) {
+        // Lai izvēlētos nejaušu šūnu
+        const row = Math.floor(Math.random() * 9);
+        const col = Math.floor(Math.random() * 9);
+
+        // Lai pārbaudītu, vai šūna nav jau tukša
+        if (board[row][col] !== '') {
+            board[row][col] = '';
+            cellsToRemove--;
+        }
+    }
+  }
+
+  useEffect(() => {
+    fillBoard(board);
+    removeNumbers(board, 1);
+  }, []);
+
+  const inputNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const [selectedCell, setSelectedCell] = useState(0);
+
+  // Lai saglabātu izvēlēto šūnu
+  function getCell(rowIndex, colIndex) {
+    setSelectedCell([rowIndex, colIndex]);
+    console.log(rowIndex, colIndex);
+    return selectedCell;
+  }
+
+  // Lai pievienotu numuru
+  function addNumber(inputNumber) {
+    console.log(selectedCell[0]);
+    const [rowIndex, colIndex] = selectedCell;
+    setBoard(prevBoard => {
+      const newBoard = prevBoard.map(rowArr => [...rowArr]);
+      newBoard[rowIndex][colIndex] = inputNumber;
+      return newBoard;
+    });
+  }
 
   return (
-    <>
-      {board.map((row, rowIndex) => (
-        <div key={rowIndex} className="row">
-          {row.map((number, colIndex) => (
-            <div 
-              key={colIndex}
-              className={`cell ${ 
-                (rowIndex + 1) % 3 === 0 ? 'bottom-border' : '' 
-              } ${
-                (colIndex + 1) % 3 === 0 ? 'right-border' : ''
-              } ${ 
-                (rowIndex + 1) % 3 === 1 ? 'top-border' : '' 
-              } ${ 
-                (colIndex + 1) % 3 === 1 ? 'left-border' : '' 
-              }`}
-            >
-              {number}
-            </div>
-          ))}
-        </div>
-      ))}
-    </>
+    <div className='container'>
+      <div>
+        {board.map((row, rowIndex) => (
+          <div key={rowIndex} className="row">
+            {row.map((number, colIndex) => (
+              <div
+                key={colIndex}
+                className={`cell ${ 
+                  (rowIndex + 1) % 3 === 0 ? 'bottom-border' : '' 
+                } ${
+                  (colIndex + 1) % 3 === 0 ? 'right-border' : ''
+                } ${ 
+                  (rowIndex + 1) % 3 === 1 ? 'top-border' : '' 
+                } ${ 
+                  (colIndex + 1) % 3 === 1 ? 'left-border' : '' 
+                } ${ 
+                  ((rowIndex === selectedCell[0]) && (colIndex === selectedCell[1])) ? 'selected' : '' 
+                }`}
+                onClick={() => getCell(rowIndex, colIndex)}
+              >
+                {number}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <div className='numberList'>
+        {inputNumbers.map((inputNumber) => (
+          <button 
+            key={inputNumber} 
+            onClick={() => addNumber(inputNumber)}
+          >
+            {inputNumber}
+          </button>
+        ))}
+      </div>
+
+    </div>
 );
 
 }
