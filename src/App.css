@@ -3,6 +3,11 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
+}
+
+body {
+  background: #272548;
 }
 
 .logo {
@@ -43,8 +48,36 @@
 
 
 .container {
+   
+  
+}
+
+.gameScreen, .startScreen, .endGame {
+  background: white; 
+  padding: 30px 70px;
+  border: #000 2px solid; 
+  border-radius: 10px;
+}
+
+.startScreen{
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  top: -70px;
+  align-items: center;
+  position: relative;
+
+}
+
+.startButton {
+  background: #73ad80;
+  padding: 10px 30px;
+  font-weight: bold;
+  font-size: 22px;
+  width: max-content;
+
+}
+.startButton:hover {
+  background: #217633;
 }
 
 .row {
@@ -62,7 +95,7 @@
 }
 
 .cell:hover{
-  border: red 2px solid; 
+  background: rgb(214, 241, 214); 
 }
 
 .input {
@@ -82,18 +115,115 @@
   border-left: 3px rgb(121, 114, 83) solid;
 }
 
-.numberList {
+.numberButtonList {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-
-.numberList button {
+.numberButtonList button {
   background: rgb(93, 159, 210);
   color: white;
   font-weight: bold;
+  padding: 15px 20px;
+}
+.numberButtonList button:hover {
+  background: rgb(21, 117, 190);
 }
 
+
 .selected {
-  border: rgb(223, 14, 14) 2px solid;
+  background: rgb(214, 241, 214); 
+}
+
+.noted {
+  color: blue;
+  font-size: 18px;
+  word-break: break-all;
+}
+
+.notFillable {
+  color: rgb(121, 114, 83);
+}
+
+.notCorrect{
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+.unhidden{
+  display: block;
+}
+
+.error {
+  display: block;
+  color: red;
+}
+
+.gameContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.editButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.noteButton {
+  background: rgb(165, 183, 231);
+}
+.noteButton:hover, .notedButton {
+  background: rgb(77, 58, 218);
+}
+
+.deleteButton {
+  background: rgb(221, 147, 147);
+}
+.deleteButton:hover {
+  background: rgb(205, 45, 45);
+}
+
+.time {
+  padding: 5px 8px;
+  border-radius: 10px;
+  background: rgb(0, 0, 0);
+  color: white;
+}
+
+.overlap {
+  background: rgb(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.endGame {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 500;
+}
+
+.restartButton {
+  background: #e09b32;
+  margin: 20px 0;
+  font-weight: bold;
+  padding: 10px 20px;
+  font-size: 20px;
+}
+.restartButton:hover {
+  background: #ae6d0c;
+}
+
+.editButtons .restartButton {
+  margin-top: auto;
+  margin-bottom: 0;
+  padding: 8px 10px;
+  font-size: 18px;
 }
