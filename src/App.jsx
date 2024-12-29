@@ -29,7 +29,7 @@ function App() {
     const solutionCopy = JSON.parse(JSON.stringify(newBoard));
     setRealBoard(solutionCopy);
 
-    removeNumbers(newBoard, 1);
+    removeNumbers(newBoard, 40);
     setBoard(newBoard);
 
     setIsStarted(true);
