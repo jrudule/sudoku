@@ -59,19 +59,63 @@ body {
   top: -70px;
   align-items: center;
   position: relative;
+}
 
+.startButton, .howToPlay {
+  font-weight: bold;
+  width: max-content;
 }
 
 .startButton {
   background: #73ad80;
-  padding: 10px 30px;
-  font-weight: bold;
+  padding: 8px 30px;
   font-size: 22px;
-  width: max-content;
-
 }
 .startButton:hover {
   background: #217633;
+}
+
+.howToPlay {
+  margin-top: 10px;
+  background: #bfdd49;
+  padding: 10px 10px;
+  font-size: 14px;
+}
+.howToPlay:hover {
+  background: #65771c;
+}
+
+.rules {
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: absolute;
+  z-index: 5;
+  top: 25%;
+  left: 0; 
+  right: 0; 
+  width: fit-content;
+  margin-inline: auto;
+  background: white;
+  padding: 40px 25px;
+  border-radius: 10px;
+  border: #000 solid 1px;
+  text-align: left;
+}
+
+.x {
+  background: rgb(72, 199, 72);
+  width: max-content;
+  padding: 0 6px 2px;
+  border-radius: 5px;
+  color: rgb(228, 228, 228);
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.x:hover {
+  background: rgb(27, 81, 10);
+  color: #000;
+  cursor: pointer;
 }
 
 .row {

@@ -6,6 +6,7 @@ import './App.css'
 function App() {
   const [isStarted, setIsStarted] = useState(false);
   const [isEnded, setIsEnded] = useState(false);
+  const [showRules, setShowRules] = useState(false);
 
   // State to store board with empty cells
   const [board, setBoard] = useState(Array.from({ length: 9 }, () => Array(9).fill(0)));
@@ -231,10 +232,24 @@ function App() {
 
   return (
     <div className='container'>
+      <div className={showRules ? 'rules' : 'hidden'}>
+        <div className='x' onClick={() => setShowRules(false)}>x</div>
+        <ul>
+          <li>The Sudoku grid has 9 rows, 9 columns, and 9 smaller 3x3 subgrids.</li>
+          <li>Each row must contain numbers from <strong>1 to 9</strong>, without repetition.</li>
+          <li>Each column must contain numbers from <strong>1 to 9</strong>, without repetition.</li>
+          <li>Each 3x3 subgrid must contain numbers from <strong>1 to 9</strong>, without repetition.</li>
+          <li>Start with the numbers already given in the grid and fill in the rest.</li>
+        </ul>
+      </div>
+
       <div className={`${isStarted ? 'hidden' : 'startScreen'} ${isEnded ? 'hidden' : ''}`}>
         <h1>SUDOKU</h1>
         <button className='startButton' onClick={() => startGame()}>
           Start
+        </button>
+        <button className='howToPlay' onClick={() => setShowRules(true)}>
+          HOW TO PLAY
         </button>
       </div>
       <div className={isStarted ? 'gameScreen' : 'hidden'}>
