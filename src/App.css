@@ -267,6 +267,12 @@ body {
   font-size: 18px;
 }
 
+@media screen {
+  .cell:hover{
+    background: none; 
+  }
+}
+
 @media screen and (max-width: 950px) {
   .cell {
     width: 40px;
