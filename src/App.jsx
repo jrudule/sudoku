@@ -28,7 +28,7 @@ function App() {
     const solutionCopy = JSON.parse(JSON.stringify(newBoard));
     setRealBoard(solutionCopy);
 
-    removeNumbers(newBoard, 40);
+    removeNumbers(newBoard, 1);
     setBoard(newBoard);
 
     setIsStarted(true);
@@ -124,7 +124,6 @@ function App() {
   const hours = Math.floor(time / 360000);
   const minutes = Math.floor((time % 360000) / 6000);
   const seconds = Math.floor((time % 6000) / 100);
-
 
   const inputNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const [selectedCell, setSelectedCell] = useState(0);
@@ -306,8 +305,9 @@ function App() {
             </button>
           </div>
         </div>
+      </div>  
 
-        <div className={isEnded ? 'overlap' : 'hidden'}></div>
+      <div className={isEnded ? 'overlap' : 'hidden'}></div>
         <div className={isEnded ? 'endGame' : 'hidden'}>
           <h1>You won!</h1>
           <div> 
@@ -319,7 +319,6 @@ function App() {
             Restart
           </button>
         </div>
-      </div>  
     </div>
   );
 }

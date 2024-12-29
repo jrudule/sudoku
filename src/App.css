@@ -46,12 +46,6 @@ body {
   color: #888;
 }
 
-
-.container {
-   
-  
-}
-
 .gameScreen, .startScreen, .endGame {
   background: white; 
   padding: 30px 70px;
@@ -119,6 +113,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  gap: 10px;
 }
 .numberButtonList button {
   background: rgb(93, 159, 210);
@@ -226,4 +221,128 @@ body {
   margin-bottom: 0;
   padding: 8px 10px;
   font-size: 18px;
+}
+
+@media screen and (max-width: 950px) {
+  .cell {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+  .noted {
+    font-size: 12px;
+  }
+  .numberButtonList button {
+    padding: 5px 10px;
+  }
+
+  .numberButtonList {
+    gap: 5px;
+  }
+  
+  .noteButton, .notedButton, .deleteButton {
+    width: max-content;
+  }
+
+  .gameScreen{
+    padding: 15px 20px;
+  }
+  
+}
+
+@media screen and (max-width: 650px) {
+  .gameContainer{
+    flex-direction: column-reverse;
+  }
+
+  .numberButtonList, .editButtons {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .editButtons button {
+    flex: 1;
+  }
+
+  .time {
+    flex-basis: 100%;
+  }
+
+  .editButtons .restartButton {
+    margin-top: 0;
+  }
+  
+}
+
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: revert;
+  }
+
+  .cell {
+    width: 35px;
+    height: 35px;
+  }
+  .noted {
+    font-size: 10px;
+  }
+  .numberButtonList button {
+    padding: 10px 15px;
+  }
+  .numberButtonList {
+    max-width: 250px;
+    margin: auto;
+    justify-content: center;
+  }
+
+  .startScreen, .endGame {
+    padding: 15px 35px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #root {
+    padding: 0;
+  }
+  .cell {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+  .noted {
+    font-size: 10px;
+  }
+  .numberButtonList button {
+    padding: 10px 15px;
+  }
+  .numberButtonList {
+    max-width: 250px;
+    margin: auto;
+    justify-content: center;
+  }
+
+  .editButtons {
+    max-width: 290px;
+    margin: auto;
+  }
+
+  .startScreen, .endGame {
+    padding: 15px 35px;
+  }
+
+}
+
+@media screen and (max-width: 350px) {
+  .cell {
+    width: 25px;
+    height: 25px;
+    font-size: 15px;
+  }
+  .noted {
+    font-size: 8px;
+  }
+
+  .editButtons {
+    max-width: 250px;
+  }
 }
