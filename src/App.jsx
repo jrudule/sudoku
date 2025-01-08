@@ -252,7 +252,7 @@ function App() {
           HOW TO PLAY
         </button>
       </div>
-      <div className={isStarted ? 'gameScreen' : 'hidden'}>
+      <div className={isStarted ? 'gameScreen' : 'hidden'} data-testid='gameScreen'>
         <div className={(notCorrect.length === 0) ? 'hidden' : 'error'}>
           Red number is incorrect
         </div>
@@ -262,6 +262,7 @@ function App() {
             {inputNumbers.map((inputNumber) => (
               <button 
                 key={inputNumber} 
+                data-testid={inputNumber}
                 onClick={() => addNumber(inputNumber)}
               >
                 {inputNumber}
@@ -302,7 +303,7 @@ function App() {
           </div>
 
           <div className='editButtons'>
-            <div className="time">
+            <div className="time" data-testid='time'>
               {hours}:{minutes.toString().padStart(2, "0")}:
               {seconds.toString().padStart(2, "0")}
             </div>
